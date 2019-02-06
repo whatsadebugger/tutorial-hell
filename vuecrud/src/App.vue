@@ -1,6 +1,19 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
+  <div id="app" class="container">
+    <nav class="navbar navbar-expand bg-light">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <router-link :to="{ name: 'Create' }" class="nav-link">Add Items</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link :to="{ name: 'Index' }" class="nav-link">All Items</router-link>
+        </li>
+      </ul>
+    </nav>
+
+    <transition name="fade">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 
@@ -18,7 +31,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 .fade-enter-active, .fade-leave-active {
