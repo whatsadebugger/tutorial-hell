@@ -8,8 +8,8 @@ import Index from './components/Index.vue'
 import Vue from 'vue'
 import App from './App.vue'
 
-Vue.Use(VueRouter)
-Vue.Use(VueAxios)
+Vue.use(VueRouter)
+Vue.use(VueAxios)
 
 const routes = [
   {
