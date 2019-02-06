@@ -11,9 +11,7 @@
       </ul>
     </nav>
 
-    <transition name="fade">
-      <router-view></router-view>
-    </transition>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -33,11 +31,4 @@ export default {
   color: #2c3e50;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s
-}
-
-.fade-enter, .fade-leave-active {
-  opacity: 0
-}
 </style>
