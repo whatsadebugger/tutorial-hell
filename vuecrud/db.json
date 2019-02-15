@@ -1,0 +1,36 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "items": [
+    {
+      "id": 1,
+      "name": "pibb xtra",
+      "price": 10
+    },
+    {
+      "name": "ahmad",
+      "price": "1000",
+      "id": 2
+    },
+    {
+      "name": "pillow",
+      "price": "10",
+      "id": 3
+    }
+  ]
+}

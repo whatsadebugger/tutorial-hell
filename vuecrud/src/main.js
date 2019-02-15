@@ -1,5 +1,6 @@
 import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
+import axios from 'axios'
 
 import Create from './components/Create.vue'
 import Edit from './components/Edit.vue'
@@ -11,7 +12,7 @@ import App from './App.vue'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 
 Vue.use(VueRouter)
-Vue.use(VueAxios)
+Vue.use(VueAxios, axios)
 
 const routes = [
   {

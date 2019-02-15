@@ -9,11 +9,11 @@
       <form v-on:submit.prevent="addItem">
         <div class="form-group">
           <label>Item Name:</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" v-model="item.name">
         </div>
         <div class="form-group">
           <label>Item Price:</label>
-          <input type="text" class="form-control">
+          <input type="text" class="form-control" v-model="item.price">
         </div>
         <div class="form-group">
           <input type="submit" class="btn btn-primary" value="Add Item">
@@ -25,6 +25,19 @@
 
 <script>
 export default {
-
+  data () {
+    return {
+      item: {}
+    }
+  },
+  methods: {
+    addItem () {
+      let uri = 'http://localhost:3000/items'
+      this.axios.post(uri, this.item).then((response) => {
+        console.log(response.data)
+      })
+    }
+  }
 }
+
 </script>
