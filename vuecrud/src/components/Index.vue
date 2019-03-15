@@ -1,12 +1,12 @@
 // Index.vue
 <template>
   <div>
-    <h1>Items</h1>
+    <h1>Phones</h1>
 
     <table class="table table-hover">
       <thead>
         <tr>
-          <td>ID</td>
+          <td>IMEI</td>
           <td>Item Name</td>
           <td>Item Price</td>
           <td>Actions</td>
@@ -41,13 +41,13 @@ export default {
   },
   methods: {
     fetchItems () {
-      let uri = 'http://localhost:3000/items'
+      let uri = 'http://localhost:3000/phones'
       this.axios.get(uri).then(response => {
         this.items = response.data
       })
     },
-    deleteItem (id) {
-      let uri = 'http://localhost:3000/items/' + id
+    deleteItem (imei) {
+      let uri = 'http://localhost:3000/phones' + imei
       this.axios.delete(uri)
     }
   }

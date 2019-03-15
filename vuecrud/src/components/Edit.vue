@@ -38,14 +38,14 @@ export default {
 
   methods: {
     getItem () {
-      let uri = 'http://localhost:3000/items/' + this.$route.params.id
+      let uri = 'http://localhost:3000/phones/' + this.$route.params.id
       this.axios.get(uri).then(response => {
         this.item = response.data
       })
     },
 
     updateItem () {
-      let uri = 'http://localhost:3000/items/' + this.$route.params.id
+      let uri = 'http://localhost:3000/phones/' + this.$route.params.id
       this.axios.patch(uri, this.item).then(response => {
         this.$router.push({ name: 'Index' })
       })
