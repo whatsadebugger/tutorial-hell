@@ -1,6 +1,6 @@
 <template>
   <div id="app" class="container">
-    <nav class="navbar navbar-expand bg-light">
+    <nav class="navbar is-light">
       <ul class="navbar-nav">
         <li class="nav-item">
           <router-link :to="{ name: 'Create' }" class="nav-link">Add Items</router-link>

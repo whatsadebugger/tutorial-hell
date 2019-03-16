@@ -9,7 +9,7 @@ import Index from './components/Index.vue'
 import Vue from 'vue'
 import App from './App.vue'
 
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import 'bulma/css/bulma.css'
 
 Vue.use(VueRouter)
 Vue.use(VueAxios, axios)
