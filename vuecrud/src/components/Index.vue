@@ -8,7 +8,7 @@
           <th>Item Price</th>
           <th>Actions</th>
         </tr>
-        <tr v-for="item in items" :key="item.id">
+        <tr v-for="(item, index) in items" :key="item.id">
           <td>{{ item.id }}</td>
           <td>{{ item.name }}</td>
           <td>{{ item.price }}</td>
@@ -16,7 +16,7 @@
             <router-link :to="{name: 'Edit', params: { id: item.id }}" class="button is-primary is-small">Edit</router-link>
           </td>
           <td>
-            <button class="button is-danger is-small" @click="deleteItem(item.id)">Delete</button>
+            <button class="button is-danger is-small" @click="deleteItem(item.id, index)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -40,9 +40,12 @@ export default {
         this.items = response.data
       })
     },
-    deleteItem (imei) {
-      let uri = 'http://localhost:3000/phones' + imei
-      this.axios.delete(uri)
+    deleteItem: function (imei, index) {
+      console.log(index)
+      let uri = 'http://localhost:3000/phones/' + imei
+      this.axios.delete(uri).then(() => {
+        console.log(this.items.splice(index, 1))
+      })
     }
   }
 }
