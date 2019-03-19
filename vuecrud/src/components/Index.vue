@@ -46,6 +46,7 @@ export default {
       this.axios.delete(uri).then(() => {
         console.log(this.items.splice(index, 1))
       })
+        .catch(error => console.log(error))
     }
   }
 }
