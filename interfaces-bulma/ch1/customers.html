@@ -112,13 +112,13 @@
               </p>
             </div>
             <p class="level-item">
-              <a href="new-book.html" class="button is-success">New</a>
+              <a href="new-customer.html" class="button is-success">New</a>
             </p>
 
             <div class="level-item is-hidden-tablet-only">
               <div class="field has-addons">
                 <p class="control">
-                  <input type="text" class="input" placeholder="Book name, ISBN...">
+                  <input type="text" class="input" placeholder="Name, email...">
                 </p>
                 <p class="control">
                   <button class="button">
@@ -130,22 +130,106 @@
           </div>
 
           <div class="level-right">
-            <div class="level-item">
-              Order By
-            </div>
-            <div class="level-item">
-              <div class="select">
-                <select>
-                  <option>Publish Date</option>
-                  <option>Price</option>
-                  <option>Page count</option>
-                </select>
-              </div>
-            </div>
+            <p class="level-item"><strong>All</strong></p>
+            <p class="level-item"><a>With orders</a></p>
+            <p class="level-item"><a>Without orders</a></p>
           </div>
         </nav>
 
-        <div class="columns is-multiline"></div>
+        <table class="table is-hoverable is-fullwidth">
+          <thead>
+            <tr>
+              <th class="is-narrow">
+                <input type="checkbox">
+              </th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Orders</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+
+          <tfoot>
+            <tr>
+              <th class="is-narrow">
+                <input type="checkbox">
+              </th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Orders</th>
+              <th>Actions</th>
+            </tr>
+          </tfoot>
+
+          <tbody>
+            <tr>
+              <td>
+                <input type="checkbox">
+              </td>
+              <td>
+                <a href="edit-customer.html">
+                  <strong>John Doe</strong>
+                </a>
+              </td>
+              <td><code>johndoe@gmail.com</code></td>
+              <td>United States</td>
+              <td>
+                <a href="customer-orders.html">2</a>
+              </td>
+              <td>
+                <div class="buttons">
+                  <a href="edit-customer.html" class="button is-small">Edit</a>
+                  <a class="button is-small">Delete</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox">
+              </td>
+              <td>
+                <a href="edit-customer.html">
+                  <strong>John Snow</strong>
+                </a>
+              </td>
+              <td><code>johnsnow@gmail.com</code></td>
+              <td>United States</td>
+              <td>
+                <a href="customer-orders.html">2</a>
+              </td>
+              <td>
+                <div class="buttons">
+                  <a href="edit-customer.html" class="button is-small">Edit</a>
+                  <a class="button is-small">Delete</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <input type="checkbox">
+              </td>
+              <td>
+                <a href="edit-customer.html">
+                  <strong>John Miller</strong>
+                </a>
+              </td>
+              <td><code>johnmiller@gmail.com</code></td>
+              <td>United States</td>
+              <td>
+                <a href="customer-orders.html">2</a>
+              </td>
+              <td>
+                <div class="buttons">
+                  <a href="edit-customer.html" class="button is-small">Edit</a>
+                  <a class="button is-small">Delete</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
 
         <nav class="pagination">
           <a class="pagination-previous">Previous</a>
