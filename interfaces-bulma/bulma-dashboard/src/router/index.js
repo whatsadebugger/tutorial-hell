@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Dashboard from '../Dashboard.vue'
-import Customers from '../Customers.vue'
-import Books from '../Books.vue'
-import Orders from '../Orders.vue'
+import Dashboard from '../pages/Dashboard.vue'
+import Customers from '../pages/Customers.vue'
+import Books from '../pages/Books.vue'
+import Orders from '../pages/Orders.vue'
 
 Vue.use(Router)
 
