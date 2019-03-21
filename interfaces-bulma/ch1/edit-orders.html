@@ -151,7 +151,73 @@
               United States
             </p>
           </div>
+
           <div class="column">
+            <p class="heading">
+              <strong>Books</strong>
+            </p>
+            <table class="table is-bordered is-fullwidth">
+              <thead>
+                <tr>
+                  <th class="is-narrow">Cover</th>
+                  <th>Title</th>
+                  <th class="has-text-right is-narrow">Price</th>
+                  <th class="has-text-right is-narrow">Amount</th>
+                  <th class="has-text-right is-narrow">Total</th>
+                </tr>
+              </thead>
+              <tfoot>
+                <tr>
+                  <th colspan="5" class="has-text-right">$42.98</th>
+                </tr>
+              </tfoot>
+
+              <tbody>
+                <tr>
+                  <td>
+                    <img src="images/tensorflow.jpg">
+                  </td>
+                  <td>
+                    <a href="edit-book.html">
+                      <strong>TensorFlow For Machine Intelligence</strong>
+                    </a>
+                  </td>
+                  <td class="has-text-right">
+                    $19.99
+                  </td>
+                  <td class="has-text-right">
+                    <input class="input is-small" type="number" value="1" maxlength="2" max="2">
+                  </td>
+                  <td class="has-text-right">
+                    $19.99
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="5">
+                    <div class="field is-grouped is-grouped-right">
+                      <div class="control">
+                        <div class="select is-small">
+                          <select>
+                            <option>TensorFlow For Machine Intelligence</option>
+                            <option>Docker in Production</option>
+                            <option>Developing a Gulp.js Edge</option>
+                            <option>Learning Swift</option>
+                            <option>Choosing a JavaScript Framework</option>
+                            <option>Deconstructing Google Cardboard Apps</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="control">
+                        <input class="input is-small" type="number" placeholder="Amount" value="1" max="2" maxlength="2">
+                      </div>
+                      <div class="control">
+                        <a class="button is-small is-link">Add book</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
 
           </div>
         </div>
