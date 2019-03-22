@@ -90,24 +90,44 @@
             <template v-for="(book, key) in books">
               <div class="media" :key="book.id">
                 <div class="media-left is-marginless">
-                  <p class="number">
-                    {{ key + 1 }}
-                  </p>
+                  <p class="number">{{ key + 1 }}</p>
                 </div>
                 <div class="media-left">
-                  <img :src="book.img" width="40">
+                  <img :src="book.image" width="40">
                 </div>
                 <div class="media-content">
                   <p class="title is-5 is-spaced is-marginless">
                     <router-link to="/edit-book">{{ book.name }}</router-link>
                   </p>
                 </div>
-                <div class="media-right">
-                  {{ book.copiesSold }} sold
-                </div>
+                <div class="media-right">{{ book.copiesSold }} sold</div>
               </div>
             </template>
             <router-link class="button is-link is-outlined" to="/books">View all books</router-link>
+          </div>
+        </div>
+      </div>
+
+      <div class="column is-12-tablet is-6-desktop is-4-fullhd">
+        <div class="card">
+          <div class="card-content">
+            <h2 class="title is-4">Most loyal customers</h2>
+            <template v-for="(customer, key) in customers">
+              <div class="media" :key="customer.id">
+                <div class="media-left is-marginless">
+                  <p class="number">{{ key +1 }}</p>
+                </div>
+                <div class="media-content">
+                  <p class="title is-5 is-spaced is-marginless">
+                    <router-link to="/edit-customer">{{ customer.name}}</router-link>
+                  </p>
+                  <p class="subtitle is-6">{{ customer.country }}</p>
+                </div>
+                <div class="media-right">{{ customer.orderCount }} orders</div>
+              </div>
+            </template>
+
+            <router-link class="button is-link is-outlined" to="/customers">View all customers</router-link>
           </div>
         </div>
       </div>
