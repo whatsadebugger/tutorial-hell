@@ -60,7 +60,7 @@
                 <div class="level-left">
                   <div>
                     <p class="title is-5 is-marginless">
-                      <router-link>{{ order.id }}</router-link>
+                      <router-link to="/edit-order">{{ order.id }}</router-link>
                     </p>
                     <small>
                       {{ order.date }} by
