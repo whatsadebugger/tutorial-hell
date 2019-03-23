@@ -166,13 +166,13 @@ export default {
           id: 1,
           name: "Learning Swift",
           copiesSold: 146,
-          image: "images/swift.jpg"
+          image: "src/assets/images/swift.jpg"
         },
         {
           id: 2,
           name: "TensorFlow for Machine Intelligence",
           copiesSold: 56,
-          image: "images/tensorflow.jpg"
+          image: "src/assets/images/tensorflow.jpg"
         },
         {
           id: 3,

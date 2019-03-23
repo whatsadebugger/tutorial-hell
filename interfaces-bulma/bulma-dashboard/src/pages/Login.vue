@@ -6,7 +6,7 @@
           <div class="column is-5-tablet is-4-desktop is-3-sidescreen">
             <form class="box">
               <div class="field has-text-centered">
-                <img src="images/logo.png" width="167">
+                <img src="src/assets/images/logo.png" width="167">
               </div>
               <div class="field">
                 <label class="label">Email</label>

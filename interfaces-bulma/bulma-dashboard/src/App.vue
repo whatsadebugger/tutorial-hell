@@ -4,7 +4,7 @@
       <nav class="navbar has-shadow">
         <div class="navbar-brand">
           <a class="navbar-item">
-            <img src="images/logo.png">
+            <img src="src/assets/images/logo.png">
           </a>
           <div class="navbar-burger">
             <span></span>
