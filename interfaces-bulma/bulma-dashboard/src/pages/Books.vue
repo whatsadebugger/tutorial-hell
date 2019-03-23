@@ -1,14 +1,132 @@
 <template>
-  
+  <div class="column">
+    <h1 class="title">Books</h1>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <p class="subtitle is-5">
+            <strong>6</strong> books
+          </p>
+        </div>
+        <p class="level-item">
+          <a href="new-book.html" class="button is-success">New</a>
+        </p>
+
+        <div class="level-item is-hidden-tablet-only">
+          <div class="field has-addons">
+            <p class="control">
+              <input type="text" class="input" placeholder="Book name, ISBN...">
+            </p>
+            <p class="control">
+              <button class="button">Search</button>
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="level-right">
+        <div class="level-item">Order By</div>
+        <div class="level-item">
+          <div class="select">
+            <select>
+              <option>Publish Date</option>
+              <option>Price</option>
+              <option>Page count</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="columns is-multiline">
+      <template v-for="(book,index) in books">
+        <div class="column is-12-tablet is-6-desktop is-4-widescreen"
+          :key="book.ISBN">
+          <article class="box">
+            <div class="media">
+              <aside class="media-left">
+                <img :src="book.coverImage" width="80">
+              </aside>
+
+              <div class="media-content">
+                <p class="title is-5 is-spaced is-marginless">
+                  <a @click="showEditModal">{{ book.title }}</a>
+                </p>
+                <p class="subtitle is-marginless">{{ book.price }}</p>
+                <div class="content is-small">
+                  {{ book.pageCount }}
+                  <br>ISBN: {{ book.ISBN }}
+                  <br>
+                  <a @click="editBook(book)">Edit</a>
+                  <span>.</span>
+                  <a @click="removeBook(index)">Delete</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </template>
+    </div>
+
+    <nav class="pagination">
+      <a class="pagination-previous">Previous</a>
+      <a class="pagination-next">Next page</a>
+      <ul class="pagination-list">
+        <li>
+          <a class="pagination-link">1</a>
+        </li>
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li>
+          <a class="pagination-link">45</a>
+        </li>
+        <li>
+          <a class="pagination-link is-current">46</a>
+        </li>
+        <li>
+          <a class="pagination-link">47</a>
+        </li>
+        <li>
+          <span class="pagination-ellipsis">&hellip;</span>
+        </li>
+        <li>
+          <a class="pagination-link">86</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'Books',
-}
+  name: "Books",
+  data() {
+    return {
+      books: [
+        {
+          name: "TensorFlow For Machine Intelligence",
+          price: "$22.99",
+          pageCount: 270,
+          ISBN: "9781939902351",
+          coverImage: "src/assets/images/tensorflow.jpg",
+          publishDate: 2017,
+        },
+        {
+          name: "Docker in Production",
+          price: "$22.99",
+          pageCount: 156,
+          ISBN: "9781939902184",
+          coverImage: "src/assets/images/docker.jpg",
+          publishDate: 2015,
+        },
+      ],
+      allBooks: []
+    }
+  }
+};
 </script>
 
 <style>
-
 </style>
 
