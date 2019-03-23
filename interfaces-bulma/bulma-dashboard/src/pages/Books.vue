@@ -14,10 +14,11 @@
 
         <div class="level-item is-hidden-tablet-only">
           <div class="field has-addons">
-            <p class="control">
-              <input type="text" class="input" placeholder="Book name, ISBN...">
+            <p class="control" >
+              <input type="text" class="input" placeholder="Book name, ISBN..."
+                v-model="searchWord" @keyup="searchBooks">
             </p>
-            <p class="control">
+            <p class="control" @click="searchBooks">
               <button class="button">Search</button>
             </p>
           </div>
@@ -147,8 +148,50 @@ export default {
           publishDate: 2014,
         },
       ],
-      allBooks: [],
+      allBooks: [
+        {
+          title: "TensorFlow For Machine Intelligence",
+          price: "$22.99",
+          pageCount: 270,
+          ISBN: "9781939902351",
+          coverImage: "src/assets/images/tensorflow.jpg",
+          publishDate: 2017,
+        },
+        {
+          title: "Docker in Production",
+          price: "$22.99",
+          pageCount: 156,
+          ISBN: "9781939902184",
+          coverImage: "src/assets/images/docker.jpg",
+          publishDate: 2015,
+        },
+        {
+          title: "Learning Swift",
+          price: "$24.99",
+          pageCount: 342,
+          ISBN: "9781939902115",
+          coverImage: "src/assets/images/swift.jpg",
+          publishDate: 2015,
+        },
+        {
+          title: "Choosing a JavaScript Framework",
+          price: "$19.99",
+          pageCount: 270,
+          ISBN: "9781939902092",
+          coverImage: "src/assets/images/js-framework.jpg",
+          publishDate: 2015,
+        },
+        {
+          title: "Developing a Gulp.js Edge",
+          price: "$15.99",
+          pageCount: 134,
+          ISBN: "9781939902146",
+          coverImage: "src/assets/images/gulp.jpg",
+          publishDate: 2014,
+        },
+      ],
       showEditModal: false,
+      searchWord: '',
     }
   },
   methods: {
@@ -159,13 +202,23 @@ export default {
     removeBook(index) {
       this.books.splice(index, 1)
     },
+    searchBooks() {
+      if(!this.searchWord) {
+        this.books = Object.assign([], this.allBooks);
+      } else {
+        this.books = this.books.filter((book) => {
+          return book.title.toLowerCase().includes(this.searchWord.toLowerCase())
+        })
+      }
+    },
     sortBooks(event) {
       let selectValue = String(event.target.value)
       let collection = Collect(this.books)
       let sortedBooks = collection.sortBy(selectValue)
       this.books = Object.assign([], sortedBooks.all())
     }
-  }
+  },
+
 };
 </script>
 
