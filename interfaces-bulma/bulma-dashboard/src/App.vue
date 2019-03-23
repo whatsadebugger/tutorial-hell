@@ -31,8 +31,8 @@
                     Profile
                   </div>
                 </a>
-                <a class="navbar-item">
-                  <div>
+                <a class="navbar-item" @click="openBugReport = true">
+                  <div >
                     <span class="icon is-small">
                       <i class="fa fa-bug"></i>
                     </span>
@@ -103,15 +103,19 @@
 
     </template>
     <div v-else><router-view/></div>
+    <bug-report :showModal="openBugReport" @close="openBugReport = false"></bug-report>
   </div>
 </template>
 
 <script>
+import BugReport from './components/BugReport.vue'
+
 export default {
   name: "app",
+  components: { BugReport },
   data() {
     return {
-      msg: "Welcome to Your Vue.js App"
+      openBugReport: false
     };
   }
 };
