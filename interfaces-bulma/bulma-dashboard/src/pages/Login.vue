@@ -11,18 +11,19 @@
               <div class="field">
                 <label class="label">Email</label>
                 <div class="control has-icons-left">
-                <p class="help is-danger" v-if="error.email">Oops! Can't find user.</p>
-                  <input class="input" type="email" placeholder="e.g. alexjohnson@gmail.com">
+                  <input class="input" v-model="form.email"
+                    :class="{'is-danger': this.error.email || this.error.password}" type="email"
+                    placeholder="e.g. alexjohnson@gmail.com">
                   <span class="icon is-small is-left">
                     <i class="fa fa-envelope"></i>
                   </span>
                 </div>
+                <p class="help is-danger" v-if="error.email || this.error.password">Username or password don't match</p>
               </div>
               <div class="field">
                 <label class="label">Password</label>
                 <div class="control has-icons-left">
-                  <p class="help is-danger" v-if="error.email">hmm</p>
-                  <input class="input" type="password" placeholder="********" required>
+                  <input class="input" v-model="form.password" type="password" placeholder="********" required>
                   <span class="icon is-small is-left">
                     <i class="fa fa-lock"></i>
                   </span>
@@ -35,7 +36,7 @@
                 </label>
               </div>
               <div class="field">
-                <button class="button is-success">Login</button>
+                <button class="button is-success" @click.prevent="tryLogin">Login</button>
               </div>
             </form>
           </div>
@@ -59,6 +60,20 @@ export default {
         password: false
       }
     };
+  },
+  methods: {
+    tryLogin() {
+      this.resetErrors()
+      if (this.form.email !== 'ahmad@test.com') { return this.error.email = true; }
+      if (this.form.password !== 'test') { return this.error.password = true; }
+
+      this.resetErrors()
+      this.$router.push('dashboard')
+    },
+    resetErrors() {
+      this.error.email = false;
+      this.error.password = false;
+    }
   }
 };
 </script>
