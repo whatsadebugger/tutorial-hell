@@ -9,14 +9,19 @@
           </p>
         </div>
         <p class="level-item">
-          <a href="new-book.html" class="button is-success">New</a>
+          <a class="button is-success" @click="showNewModal=true">New</a>
         </p>
 
         <div class="level-item is-hidden-tablet-only">
           <div class="field has-addons">
-            <p class="control" >
-              <input type="text" class="input" placeholder="Book name, ISBN..."
-                v-model="searchWord" @keyup="searchBooks">
+            <p class="control">
+              <input
+                type="text"
+                class="input"
+                placeholder="Book name, ISBN..."
+                v-model="searchWord"
+                @keyup="searchBooks"
+              >
             </p>
             <p class="control" @click="searchBooks">
               <button class="button">Search</button>
@@ -41,8 +46,7 @@
 
     <div class="columns is-multiline">
       <template v-for="(book,index) in books">
-        <div class="column is-12-tablet is-6-desktop is-4-widescreen"
-          :key="book.ISBN">
+        <div class="column is-12-tablet is-6-desktop is-4-widescreen" :key="book.ISBN">
           <article class="box">
             <div class="media">
               <aside class="media-left">
@@ -56,7 +60,8 @@
                 <p class="subtitle is-marginless">{{ book.price }}</p>
                 <div class="content is-small">
                   {{ book.pageCount }}
-                  <br>ISBN: {{ book.ISBN }}
+                  <br>
+                  ISBN: {{ book.ISBN }}
                   <br>
                   <a @click="editBook(book)">Edit</a>
                   <span>.</span>
@@ -96,11 +101,30 @@
         </li>
       </ul>
     </nav>
+
+    <template>
+      <div class="modal" :class="{'is-active': showNewModal}">
+        <div class="modal-background" @click="resetNewBook"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title"> title</p>
+            <button class="delete" aria-label="close"></button>
+          </header>
+          <section class="modal-card-body">
+
+          </section>
+          <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button is-danger">Cancel</button>
+          </footer>
+        </div>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
-import Collect from 'collect.js'
+import Collect from "collect.js";
 
 export default {
   name: "Books",
@@ -113,7 +137,7 @@ export default {
           pageCount: 270,
           ISBN: "9781939902351",
           coverImage: "src/assets/images/tensorflow.jpg",
-          publishDate: 2017,
+          publishDate: 2017
         },
         {
           title: "Docker in Production",
@@ -121,7 +145,7 @@ export default {
           pageCount: 156,
           ISBN: "9781939902184",
           coverImage: "src/assets/images/docker.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Learning Swift",
@@ -129,7 +153,7 @@ export default {
           pageCount: 342,
           ISBN: "9781939902115",
           coverImage: "src/assets/images/swift.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Choosing a JavaScript Framework",
@@ -137,7 +161,7 @@ export default {
           pageCount: 270,
           ISBN: "9781939902092",
           coverImage: "src/assets/images/js-framework.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Developing a Gulp.js Edge",
@@ -145,8 +169,8 @@ export default {
           pageCount: 134,
           ISBN: "9781939902146",
           coverImage: "src/assets/images/gulp.jpg",
-          publishDate: 2014,
-        },
+          publishDate: 2014
+        }
       ],
       allBooks: [
         {
@@ -155,7 +179,7 @@ export default {
           pageCount: 270,
           ISBN: "9781939902351",
           coverImage: "src/assets/images/tensorflow.jpg",
-          publishDate: 2017,
+          publishDate: 2017
         },
         {
           title: "Docker in Production",
@@ -163,7 +187,7 @@ export default {
           pageCount: 156,
           ISBN: "9781939902184",
           coverImage: "src/assets/images/docker.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Learning Swift",
@@ -171,7 +195,7 @@ export default {
           pageCount: 342,
           ISBN: "9781939902115",
           coverImage: "src/assets/images/swift.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Choosing a JavaScript Framework",
@@ -179,7 +203,7 @@ export default {
           pageCount: 270,
           ISBN: "9781939902092",
           coverImage: "src/assets/images/js-framework.jpg",
-          publishDate: 2015,
+          publishDate: 2015
         },
         {
           title: "Developing a Gulp.js Edge",
@@ -187,38 +211,40 @@ export default {
           pageCount: 134,
           ISBN: "9781939902146",
           coverImage: "src/assets/images/gulp.jpg",
-          publishDate: 2014,
-        },
+          publishDate: 2014
+        }
       ],
       showEditModal: false,
-      searchWord: '',
-    }
+      showNewModal: false,
+      searchWord: ""
+    };
   },
   methods: {
-    editBook() {
-
-
-    },
+    editBook() {},
     removeBook(index) {
-      this.books.splice(index, 1)
+      this.books.splice(index, 1);
     },
     searchBooks() {
-      if(!this.searchWord) {
+      if (!this.searchWord) {
         this.books = Object.assign([], this.allBooks);
       } else {
-        this.books = this.books.filter((book) => {
-          return book.title.toLowerCase().includes(this.searchWord.toLowerCase())
-        })
+        this.books = this.books.filter(book => {
+          return book.title
+            .toLowerCase()
+            .includes(this.searchWord.toLowerCase());
+        });
       }
     },
     sortBooks(event) {
-      let selectValue = String(event.target.value)
-      let collection = Collect(this.books)
-      let sortedBooks = collection.sortBy(selectValue)
-      this.books = Object.assign([], sortedBooks.all())
+      let selectValue = String(event.target.value);
+      let collection = Collect(this.books);
+      let sortedBooks = collection.sortBy(selectValue);
+      this.books = Object.assign([], sortedBooks.all());
+    },
+    resetNewBook() {
+      this.showNewModal = false;
     }
-  },
-
+  }
 };
 </script>
 
