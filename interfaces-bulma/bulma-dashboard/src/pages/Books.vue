@@ -28,10 +28,10 @@
         <div class="level-item">Order By</div>
         <div class="level-item">
           <div class="select">
-            <select>
-              <option>Publish Date</option>
-              <option>Price</option>
-              <option>Page count</option>
+            <select @change="sortBooks">
+              <option value="publishDate">Publish Date</option>
+              <option value="price">Price</option>
+              <option value="pageCount">Page count</option>
             </select>
           </div>
         </div>
@@ -99,13 +99,15 @@
 </template>
 
 <script>
+import Collect from 'collect.js'
+
 export default {
   name: "Books",
   data() {
     return {
       books: [
         {
-          name: "TensorFlow For Machine Intelligence",
+          title: "TensorFlow For Machine Intelligence",
           price: "$22.99",
           pageCount: 270,
           ISBN: "9781939902351",
@@ -113,15 +115,55 @@ export default {
           publishDate: 2017,
         },
         {
-          name: "Docker in Production",
+          title: "Docker in Production",
           price: "$22.99",
           pageCount: 156,
           ISBN: "9781939902184",
           coverImage: "src/assets/images/docker.jpg",
           publishDate: 2015,
         },
+        {
+          title: "Learning Swift",
+          price: "$24.99",
+          pageCount: 342,
+          ISBN: "9781939902115",
+          coverImage: "src/assets/images/swift.jpg",
+          publishDate: 2015,
+        },
+        {
+          title: "Choosing a JavaScript Framework",
+          price: "$19.99",
+          pageCount: 270,
+          ISBN: "9781939902092",
+          coverImage: "src/assets/images/js-framework.jpg",
+          publishDate: 2015,
+        },
+        {
+          title: "Developing a Gulp.js Edge",
+          price: "$15.99",
+          pageCount: 134,
+          ISBN: "9781939902146",
+          coverImage: "src/assets/images/gulp.jpg",
+          publishDate: 2014,
+        },
       ],
-      allBooks: []
+      allBooks: [],
+      showEditModal: false,
+    }
+  },
+  methods: {
+    editBook() {
+
+
+    },
+    removeBook(index) {
+      this.books.splice(index, 1)
+    },
+    sortBooks(event) {
+      let selectValue = String(event.target.value)
+      let collection = Collect(this.books)
+      let sortedBooks = collection.sortBy(selectValue)
+      this.books = Object.assign([], sortedBooks.all())
     }
   }
 };
