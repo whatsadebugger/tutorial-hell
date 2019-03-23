@@ -178,7 +178,7 @@ export default {
           id: 3,
           name: "Choosing a Javascript Framework",
           copiesSold: 47,
-          image: "images/js-framework.jpg"
+          image: "src/assets/images/js-framework.jpg"
         }
       ],
       orders: [

@@ -111,11 +111,21 @@
             <button class="delete" aria-label="close"></button>
           </header>
           <section class="modal-card-body">
+            <label class="label">Title</label>
+            <input type="text" placeholder="e.g. Title" class="input" required v-model="book.title">
+            <label class="label">Price</label>
+            <input type="number" placeholder="e.g. 22.99" class="input" required v-model="book.price">
+            <label class="label">Page Count</label>
+            <input type="number" placeholder="e.g. 229" class="input" required v-model="book.pageCount">
+            <label class="label">ISBN</label>
+            <input type="number" placeholder="e.g. 1234567890123" class="input" required v-model="book.ISBN">
+            <label class="label">Publish Date</label>
+            <input type="number" placeholder="e.g. 2017" class="input" required v-model="book.publishDate">
 
           </section>
           <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
-            <button class="button is-danger">Cancel</button>
+            <button class="button is-success" @click="saveBook">Save Book</button>
+            <button class="button is-danger" @click="resetNewBook">Cancel</button>
           </footer>
         </div>
       </div>
@@ -214,15 +224,23 @@ export default {
           publishDate: 2014
         }
       ],
+      book: {},
       showEditModal: false,
       showNewModal: false,
       searchWord: ""
     };
   },
   methods: {
+    saveBook() {
+      this.books.push(this.book)
+      this.allBooks.push(this.book)
+
+      this.resetNewBook()
+    },
     editBook() {},
     removeBook(index) {
       this.books.splice(index, 1);
+      this.allBooks.splice(index, 1);
     },
     searchBooks() {
       if (!this.searchWord) {
@@ -243,6 +261,7 @@ export default {
     },
     resetNewBook() {
       this.showNewModal = false;
+      this.book = {}
     }
   }
 };
